@@ -3,3 +3,22 @@
   outline: 1px solid steelblue;
   min-height: 500px;
 }
+[data-alpha-pos='delete-drink'] {
+  display: inline-block;
+  text-align: center;
+  color: #999;
+  cursor: pointer; /*讓滑鼠移過去 (hover) 時會出現「手」的符號 */
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+[data-alpha-pos='delete-drink']:hover {
+  color: #333;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 3px;
+}

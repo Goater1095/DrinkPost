@@ -10,27 +10,32 @@
 </head>
 <body>
   <div class="container">
-    <h2 class="text-center pt-4">
-      Alpha Pos System
+    <h2 class="text-center text-light pt-4">
+      Alpha Post System
     </h2>
 
     <div class="row">
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body">
-            <h6 class="card-title">Black Tea</h6>
+      <!-- left side order list -->
+      <div class="col-md-4 p-4" data-order-lists>
+        <div class="card mb-3">
+          <div class="card-body pt-3 pr-3">
+            <div class="text-end">
+              <span data-alpha-pos="delete-drink">×</span>
+            </div>
+            <h6 class="card-title mb-1">Black Tea</h6>
             <div class="card-text">Less Ice</div>
             <div class="card-text">Half Sugar</div>
           </div>
-      
-          <div class="card-footer text-end"> 
-            <!-- text-right==>text-end -->
-            <div class="card-text text-muted">
-              $ <span>30</span>
-            </div>
+          <div class="card-footer text-end py-2">
+            <div class="card-text text-muted">$ <span data-drink-price>30</span></div>
           </div>
         </div>
-      </div><!-- /left side order list-->
+      
+        <div class="text-end">
+          <button class="btn btn-light" style="min-width:120px;" data-alpha-pos="checkout">Checkout</button>
+        </div>
+      </div>
+      <!-- /left side order list-->
 
       <div class="col-md-8"></div>
     </div>
