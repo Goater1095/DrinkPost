@@ -21,3 +21,16 @@ Drink.prototype.price = function () {
       alert('No this drink');
   }
 };
+
+const addDrinkButton = document.querySelector('[data-alpha-pos="add-drink"]');
+addDrinkButton.addEventListener('click', function () {
+  console.log('click');
+});
+
+function AlphaPos() {}
+
+let allDrinksOptions = document.querySelectorAll('input[name="drink"]');
+console.log(allDrinksOptions);
+
+let oolongTea = allDrinksOptions[1]; // Oolong Tea is the second option, so use index '1'
+console.log(oolongTea.checked);
