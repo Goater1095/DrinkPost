@@ -34,6 +34,27 @@ AlphaPos.prototype.getCheckedValue = function (inputName) {
   return selectedOption;
 };
 
+const orderLists = document.querySelector('[data-order-lists]');
+AlphaPos.prototype.addDrink = function (drink) {
+  let orderListsCard = `
+    <div class="card mb-3">
+    <div class="card-body pt-3 pr-3">
+      <div class="text-right">
+        <span data-alpha-pos="delete-drink">×</span>
+      </div>
+      <h6 class="card-title mb-1">${drink.name}</h6>
+      <div class="card-text">${drink.ice}</div>
+      <div class="card-text">${drink.sugar}</div>
+    </div>
+    <div class="card-footer text-right py-2">
+      <div class="card-text text-muted">$ <span data-drink-price>${drink.price()}</span></div>
+    </div>
+  </div>
+  `;
+
+  orderLists.insertAdjacentHTML('afterbegin', orderListsCard);
+};
+
 // new the alphaPos Instance
 const alphaPos = new AlphaPos();
 
@@ -43,13 +64,19 @@ addDrinkButton.addEventListener('click', function () {
   const drinkName = alphaPos.getCheckedValue('drink');
   const ice = alphaPos.getCheckedValue('ice');
   const sugar = alphaPos.getCheckedValue('sugar');
-  console.log(`${drinkName}, ${ice}, ${sugar}`);
+  // console.log(`${drinkName}, ${ice}, ${sugar}`);
+
   // 2. 如果沒有選擇飲料品項，跳出提示
   if (!drinkName) {
     alert('Please choose at least one item.');
     return;
   }
+
   // 3. 建立飲料實例，並取得飲料價格
-  const drink = new Drink();
+  const drink = new Drink(drinkName, sugar, ice);
+  // console.log(drink);
+  // console.log(drink.price());
+
   // 4. 將飲料實例產生成左側訂單區的畫面
+  alphaPos.addDrink(drink);
 });
