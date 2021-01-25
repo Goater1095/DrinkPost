@@ -94,15 +94,21 @@ orderLists.addEventListener('click', function (event) {
 });
 //left side function
 AlphaPos.prototype.checkout = function () {
+  let totalAmount = 0;
   document.querySelectorAll('[data-drink-price]').forEach(function (drink) {
-    console.log(drink);
-    console.log(drink.textContent);
+    totalAmount += Number(drink.textContent);
+  });
+  return totalAmount;
+};
+AlphaPos.prototype.clearOrder = function (target) {
+  target.querySelectorAll('.card').forEach(function (card) {
+    card.remove();
   });
 };
-
 const checkoutButton = document.querySelector('[data-alpha-pos="checkout"');
 checkoutButton.addEventListener('click', function () {
   // 1. 計算訂單總金額
-  alphaPos.checkout();
+  alert(`Total amount of drinks : $${alphaPos.checkout()}`);
   // 2. 清空訂單
+  alphaPos.clearOrder(orderLists);
 });
