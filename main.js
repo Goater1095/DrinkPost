@@ -55,6 +55,10 @@ AlphaPos.prototype.addDrink = function (drink) {
   orderLists.insertAdjacentHTML('afterbegin', orderListsCard);
 };
 
+AlphaPos.prototype.deleteDrink = function (target) {
+  target.remove();
+};
+
 // new the alphaPos Instance
 const alphaPos = new AlphaPos();
 
@@ -79,4 +83,26 @@ addDrinkButton.addEventListener('click', function () {
 
   // 4. 將飲料實例產生成左側訂單區的畫面
   alphaPos.addDrink(drink);
+});
+
+orderLists.addEventListener('click', function (event) {
+  let isDeleteButton = event.target.matches('[data-alpha-pos="delete-drink"]');
+  if (!isDeleteButton) {
+    return;
+  }
+  alphaPos.deleteDrink(event.target.parentElement.parentElement.parentElement);
+});
+
+AlphaPos.prototype.checkout = function () {
+  document.querySelectorAll('[data-drink-price]').forEach(function (drink) {
+    console.log(drink);
+    console.log(drink.textContent);
+  });
+};
+
+const checkoutButton = document.querySelector('[data-alpha-pos="checkout"');
+checkoutButton.addEventListener('click', function () {
+  // 1. 計算訂單總金額
+  alphaPos.checkout();
+  // 2. 清空訂單
 });
