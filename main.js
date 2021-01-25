@@ -92,7 +92,7 @@ orderLists.addEventListener('click', function (event) {
   }
   alphaPos.deleteDrink(event.target.parentElement.parentElement.parentElement);
 });
-
+//left side function
 AlphaPos.prototype.checkout = function () {
   document.querySelectorAll('[data-drink-price]').forEach(function (drink) {
     console.log(drink);
